@@ -9,7 +9,7 @@ export const profileConfig = {
     bio: "你写下的每一个bug, 都是人类反抗被人工智能统治的一颗子弹！",
     location: "China",
     timezone: "Asia/Shanghai",
-    devices: "Google Pixel 7 • AMD Ryzen 7730U • Debian 13",
+    devices: "Google Pixel 7 • AMD Ryzen 7730U",
   },
 
   social: {
