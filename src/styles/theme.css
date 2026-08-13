@@ -1,0 +1,143 @@
+:root {
+  /* Font Families */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Corner Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Subtle Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}
+
+/* ==========================================================================
+   Light Theme (Clean White & Slate)
+   ========================================================================== */
+:root, [data-theme="light"] {
+  color-scheme: light;
+
+  --bg-page: #f1f3f6;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f8fafc;
+  --bg-card-hover: #f1f5f9;
+
+  --border-card: #e2e8f0;
+  --border-subtle: #edf2f7;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  /* GitHub Heatmap Light */
+  --gh-0: #ebedf0;
+  --gh-1: #9be9a8;
+  --gh-2: #40c463;
+  --gh-3: #30a14e;
+  --gh-4: #216e39;
+}
+
+/* ==========================================================================
+   Dark Theme (Matte Slate & Deep Charcoal)
+   ========================================================================== */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-page: #0f1115;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+
+  --bg-card: #161920;
+  --bg-card-subtle: #1e222b;
+  --bg-card-hover: #262b36;
+
+  --border-card: #272c38;
+  --border-subtle: #1f2430;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.35);
+
+  /* GitHub Heatmap Dark */
+  --gh-0: #1c212c;
+  --gh-1: #0e4429;
+  --gh-2: #006d32;
+  --gh-3: #26a641;
+  --gh-4: #39d353;
+}
+
+/* ==========================================================================
+   Clean Accent Colors (Material Accent Tones)
+   ========================================================================== */
+[data-accent="blue"], :root {
+  --primary: #2563eb;
+  --primary-subtle: rgba(37, 99, 235, 0.1);
+  --primary-text: #2563eb;
+}
+[data-theme="dark"][data-accent="blue"], [data-theme="dark"] {
+  --primary: #3b82f6;
+  --primary-subtle: rgba(59, 130, 246, 0.15);
+  --primary-text: #60a5fa;
+}
+
+[data-accent="indigo"] {
+  --primary: #6366f1;
+  --primary-subtle: rgba(99, 102, 241, 0.1);
+  --primary-text: #6366f1;
+}
+[data-theme="dark"][data-accent="indigo"] {
+  --primary: #818cf8;
+  --primary-subtle: rgba(129, 140, 248, 0.15);
+  --primary-text: #a5b4fc;
+}
+
+[data-accent="emerald"] {
+  --primary: #10b981;
+  --primary-subtle: rgba(16, 185, 129, 0.1);
+  --primary-text: #059669;
+}
+[data-theme="dark"][data-accent="emerald"] {
+  --primary: #34d399;
+  --primary-subtle: rgba(52, 211, 153, 0.15);
+  --primary-text: #6ee7b7;
+}
+
+[data-accent="amber"] {
+  --primary: #f59e0b;
+  --primary-subtle: rgba(245, 158, 11, 0.1);
+  --primary-text: #d97706;
+}
+[data-theme="dark"][data-accent="amber"] {
+  --primary: #fbbf24;
+  --primary-subtle: rgba(251, 191, 36, 0.15);
+  --primary-text: #fcd34d;
+}
+
+[data-accent="rose"] {
+  --primary: #e11d48;
+  --primary-subtle: rgba(225, 29, 72, 0.1);
+  --primary-text: #e11d48;
+}
+[data-theme="dark"][data-accent="rose"] {
+  --primary: #fb7185;
+  --primary-subtle: rgba(251, 113, 133, 0.15);
+  --primary-text: #fda4af;
+}
+
+[data-accent="slate"] {
+  --primary: #475569;
+  --primary-subtle: rgba(71, 85, 105, 0.1);
+  --primary-text: #334155;
+}
+[data-theme="dark"][data-accent="slate"] {
+  --primary: #94a3b8;
+  --primary-subtle: rgba(148, 163, 184, 0.15);
+  --primary-text: #cbd5e1;
+}

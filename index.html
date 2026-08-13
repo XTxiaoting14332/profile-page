@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto" data-accent="blue">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nightwind | Developer Portfolio</title>
+  <meta name="description" content="Personal Bento Grid Portfolio with GitHub commit calendar, tech stack, WakaTime statistics, and projects.">
+  <meta name="keywords" content="Portfolio, Bento Grid, Developer, GitHub, WakaTime, Frontend, Full-Stack">
+  <meta name="author" content="Nightwind">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./src/styles/theme.css">
+  <link rel="stylesheet" href="./src/styles/bento.css">
+  <link rel="stylesheet" href="./src/styles/components.css">
+</head>
+<body>
+  <div class="bento-container" id="app">
+    <!-- Bento Grid Layout -->
+    <main class="bento-grid">
+      
+      <!-- 1. Profile Hero Card (Span 2 col) -->
+      <section class="bento-card profile-card col-span-2" id="hero-card">
+        <div class="profile-avatar-wrap">
+          <img class="profile-avatar" id="user-avatar" src="" alt="Avatar" />
+        </div>
+        <div class="profile-content">
+          <div class="profile-name-row">
+            <h1 class="profile-name" id="user-name">Nightwind</h1>
+            <span class="card-subtitle" id="user-chinese-name">小霆</span>
+          </div>
+          <div class="profile-role" id="user-title">Full-Stack Developer</div>
+          <p class="profile-bio" id="user-bio">
+            热爱构建精致、高性能的软件与现代 Web 体验。专注于 Web 前端、跨平台与云端架构设计。
+          </p>
+          <div class="profile-tags" id="profile-tags-container">
+            <span class="pill-tag">📍 <span id="user-location">China</span></span>
+            <span class="pill-tag">🕒 <span id="user-clock">00:00:00</span></span>
+            <span class="pill-tag">💻 <span id="user-devices">Google Pixel 7 • Debian 13</span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Theme & Customizer Card (Span 1 col) -->
+      <section class="bento-card theme-card col-span-1" id="theme-card">
+        <div>
+          <div class="card-header">
+            <span class="card-title">Choose Theme</span>
+            <span class="card-subtitle">Appearance</span>
+          </div>
+          <div class="theme-mode-row" id="theme-mode-segmented">
+            <button class="theme-mode-btn active" data-mode="auto" id="btn-theme-auto">Auto</button>
+            <button class="theme-mode-btn" data-mode="light" id="btn-theme-light">Light</button>
+            <button class="theme-mode-btn" data-mode="dark" id="btn-theme-dark">Dark</button>
+          </div>
+        </div>
+
+        <div class="accent-dots-wrap">
+          <span class="accent-label">Accent Color</span>
+          <div class="accent-dots" id="accent-swatches">
+            <button class="accent-dot active" data-color="blue" style="background: #2563eb;" title="Blue"></button>
+            <button class="accent-dot" data-color="indigo" style="background: #6366f1;" title="Indigo"></button>
+            <button class="accent-dot" data-color="emerald" style="background: #10b981;" title="Emerald"></button>
+            <button class="accent-dot" data-color="amber" style="background: #f59e0b;" title="Amber"></button>
+            <button class="accent-dot" data-color="rose" style="background: #e11d48;" title="Rose"></button>
+            <button class="accent-dot" data-color="slate" style="background: #64748b;" title="Slate"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. GitHub Activity & Heatmap Card (Span 3 col) -->
+      <section class="bento-card col-span-3" id="github-card">
+        <div class="card-header">
+          <span class="card-title" id="github-card-title">GitHub Activity</span>
+          <a href="https://github.com/XTxiaoting14332" target="_blank" rel="noopener noreferrer" class="card-subtitle" id="github-profile-link">@XTxiaoting14332 ↗</a>
+        </div>
+
+        <!-- 4 Stats Bar -->
+        <div class="github-stats-bar">
+          <div class="gh-stat">
+            <span class="gh-stat-label">Total Commits</span>
+            <span class="gh-stat-val" id="stat-commits">...</span>
+          </div>
+          <div class="gh-stat">
+            <span class="gh-stat-label">Stars Earned</span>
+            <span class="gh-stat-val" id="stat-stars">...</span>
+          </div>
+          <div class="gh-stat">
+            <span class="gh-stat-label">Public Repos</span>
+            <span class="gh-stat-val" id="stat-repos">...</span>
+          </div>
+          <div class="gh-stat">
+            <span class="gh-stat-label">Followers</span>
+            <span class="gh-stat-val" id="stat-followers">...</span>
+          </div>
+        </div>
+
+        <!-- Heatmap Grid -->
+        <div class="heatmap-outer">
+          <div class="heatmap-scroll-content">
+            <div class="heatmap-months-row" id="heatmap-months"></div>
+            <div class="heatmap-grid" id="heatmap-calendar">
+              <div style="padding: 24px; text-align: center; width: 100%; color: var(--text-subtle); font-size: 0.82rem;">Loading live heatmap...</div>
+            </div>
+          </div>
+          <div class="heatmap-info-row" style="justify-content: flex-end;">
+            <div class="heatmap-legend-dots">
+              <span>Less</span>
+              <div class="legend-dot" style="background: var(--gh-0);"></div>
+              <div class="legend-dot" style="background: var(--gh-1);"></div>
+              <div class="legend-dot" style="background: var(--gh-2);"></div>
+              <div class="legend-dot" style="background: var(--gh-3);"></div>
+              <div class="legend-dot" style="background: var(--gh-4);"></div>
+              <span>More</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. WakaTime Coding Insights Dashboard (Hidden by default, shown when real data is loaded) -->
+      <section class="bento-card col-span-3" id="wakatime-card" style="display: none;">
+        <div class="card-header">
+          <div class="card-title">
+            <span id="wakatime-title-icon"></span>
+            <span>WakaTime Coding Insights</span>
+          </div>
+          <div class="waka-header-controls">
+            <div class="tech-tabs" id="waka-view-tabs" style="margin-bottom: 0;">
+              <button class="tech-tab active" data-view="languages">Languages</button>
+              <button class="tech-tab" data-view="editors">Editors</button>
+              <button class="tech-tab" data-view="operatingSystems">OS Platforms</button>
+            </div>
+            <a href="https://wakatime.com/@XTxiaoting14332" target="_blank" rel="noopener noreferrer" class="card-subtitle" id="waka-profile-link">@XTxiaoting14332 ↗</a>
+          </div>
+        </div>
+
+        <!-- 4 Key Metrics Bar -->
+        <div class="waka-metrics-grid">
+          <div class="waka-metric-box">
+            <div class="waka-metric-icon">⏱️</div>
+            <div class="waka-metric-info">
+              <span class="waka-metric-label">Code Time (人工编码)</span>
+              <span class="waka-metric-num" id="waka-code-time">Loading...</span>
+            </div>
+          </div>
+          <div class="waka-metric-box">
+            <div class="waka-metric-icon">🤖</div>
+            <div class="waka-metric-info">
+              <span class="waka-metric-label">AI Code Time (AI协作)</span>
+              <span class="waka-metric-num" id="waka-ai-time">Loading...</span>
+            </div>
+          </div>
+          <div class="waka-metric-box">
+            <div class="waka-metric-icon">⚡</div>
+            <div class="waka-metric-info">
+              <span class="waka-metric-label">Daily Average (日均)</span>
+              <span class="waka-metric-num" id="waka-daily-avg">4.8 hrs</span>
+            </div>
+          </div>
+          <div class="waka-metric-box">
+            <div class="waka-metric-icon">🏆</div>
+            <div class="waka-metric-info">
+              <span class="waka-metric-label">Total Recorded (总计)</span>
+              <span class="waka-metric-num" id="waka-total-time">865h 10m</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Stacked Progress Bar -->
+        <div class="waka-stacked-bar-wrap">
+          <div class="waka-stacked-bar" id="waka-progress-bar"></div>
+        </div>
+
+        <!-- Detailed Breakdown Grid -->
+        <div class="waka-breakdown-grid" id="waka-lang-list"></div>
+      </section>
+
+      <!-- 5. Tech Stack Card (Span 2 col) -->
+      <section class="bento-card col-span-2" id="tech-card">
+        <div class="card-header">
+          <span class="card-title">Technologies I have worked with</span>
+        </div>
+
+        <div class="tech-tabs" id="tech-category-tabs">
+          <button class="tech-tab active" data-category="all">All</button>
+        </div>
+
+        <div class="tech-icon-grid" id="tech-items-grid"></div>
+      </section>
+
+      <!-- 6. Connect & Blog Card (Span 1 col, sits right beside Tech Stack) -->
+      <section class="bento-card col-span-1" id="social-card">
+        <div class="card-header">
+          <span class="card-title">Connect & Blog</span>
+          <a href="https://blog.n1ghtw1nd.com" target="_blank" rel="noopener noreferrer" class="card-subtitle" id="blog-link-heading">Blog ↗</a>
+        </div>
+
+        <div class="copy-email-box" id="copy-email-btn" title="Click to copy email">
+          <span id="email-text">xiaoting14332@gmail.com</span>
+          <span style="font-size: 0.75rem; color: var(--text-subtle);">Copy 📋</span>
+        </div>
+
+        <div class="social-grid" id="social-links-grid"></div>
+
+        <div style="margin-top: 10px;">
+          <div class="blog-list" id="blog-posts-mini">
+            <div style="padding: 10px; color: var(--text-subtle); font-size: 0.78rem; text-align: center;">Loading blog posts...</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Featured Projects (Span 3 col, full width balanced bottom row) -->
+      <section class="bento-card col-span-3" id="projects-card">
+        <div class="card-header">
+          <span class="card-title">Featured Projects</span>
+          <span class="card-subtitle">Open Source</span>
+        </div>
+        <div class="projects-container" id="projects-list">
+          <div style="grid-column: 1 / -1; padding: 20px; color: var(--text-subtle); text-align: center; font-size: 0.82rem;">Loading repositories...</div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Tooltip & Toast -->
+  <div class="clean-tooltip" id="clean-tooltip"></div>
+  <div class="clean-toast" id="clean-toast">已复制到剪贴板</div>
+
+  <!-- JavaScript Entry Point -->
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
