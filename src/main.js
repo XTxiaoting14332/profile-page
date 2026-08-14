@@ -229,6 +229,31 @@ function renderLiveHeatmap(contributions, totalLastYear) {
 }
 
 /**
+ * Format WakaTime human readable duration into clean compact representation (e.g. "733 hrs 55 mins" -> "733h 55m")
+ */
+function formatWakaDuration(str) {
+  if (!str || typeof str !== 'string') return '0h';
+  if (str === 'AI Included') return str;
+
+  const hrMatch = str.match(/([\d,]+)\s*(?:hrs?|hours?|h\b)/i);
+  const minMatch = str.match(/([\d,]+)\s*(?:mins?|minutes?|m\b)/i);
+
+  if (hrMatch && minMatch) {
+    return `${hrMatch[1]}h ${minMatch[1]}m`;
+  }
+  if (hrMatch) {
+    return `${hrMatch[1]}h`;
+  }
+  if (minMatch) {
+    return `${minMatch[1]}m`;
+  }
+  if (/secs?|seconds?/i.test(str)) {
+    return '0h';
+  }
+  return str;
+}
+
+/**
  * 5. WakaTime Coding Insights (100% Real-Time Serverless, Auto-Hides if Not Available)
  */
 async function renderWakaTime() {
@@ -252,10 +277,33 @@ async function renderWakaTime() {
           profileLink.textContent = `@${waka.username} ↗`;
         }
 
-        setText('waka-code-time', serverlessData.totalTime || '0 hrs');
-        setText('waka-ai-time', 'AI Included');
-        setText('waka-daily-avg', serverlessData.dailyAverage || '0 hrs');
-        setText('waka-total-time', serverlessData.totalTime || '0 hrs');
+        const codeTimeStr = serverlessData.totalTime || '0 hrs';
+        const dailyAvgStr = serverlessData.dailyAverage || '0 hrs';
+        const totalTimeStr = serverlessData.totalTime || '0 hrs';
+
+        const codeTimeEl = document.getElementById('waka-code-time');
+        if (codeTimeEl) {
+          codeTimeEl.textContent = formatWakaDuration(codeTimeStr);
+          codeTimeEl.title = `Code Time: ${codeTimeStr}`;
+        }
+
+        const aiTimeEl = document.getElementById('waka-ai-time');
+        if (aiTimeEl) {
+          aiTimeEl.textContent = 'AI Included';
+          aiTimeEl.title = 'AI Assisted Coding Included';
+        }
+
+        const dailyAvgEl = document.getElementById('waka-daily-avg');
+        if (dailyAvgEl) {
+          dailyAvgEl.textContent = formatWakaDuration(dailyAvgStr);
+          dailyAvgEl.title = `Daily Average: ${dailyAvgStr}`;
+        }
+
+        const totalTimeEl = document.getElementById('waka-total-time');
+        if (totalTimeEl) {
+          totalTimeEl.textContent = formatWakaDuration(totalTimeStr);
+          totalTimeEl.title = `Total Recorded Time: ${totalTimeStr}`;
+        }
 
         const bar = document.getElementById('waka-progress-bar');
         const list = document.getElementById('waka-lang-list');

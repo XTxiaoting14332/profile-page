@@ -328,10 +328,13 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .waka-metric-icon {
   font-size: 1.2rem;
+  line-height: 1;
   flex-shrink: 0;
 }
 
@@ -339,6 +342,8 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  flex: 1;
+  overflow: hidden;
 }
 
 .waka-metric-label {
@@ -347,6 +352,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.3;
 }
 
 .waka-metric-num {
@@ -355,6 +361,9 @@
   font-family: var(--font-mono);
   color: var(--text-main);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
 }
 
 /* Stacked Multi-Color Progress Bar */
@@ -825,11 +834,26 @@
   }
 
   .gh-stat, .waka-metric-box {
-    padding: 6px 8px;
+    padding: 7px 8px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .waka-metric-box {
+    gap: 6px;
+  }
+
+  .waka-metric-icon {
+    font-size: 1rem;
   }
 
   .gh-stat-val, .waka-metric-num {
-    font-size: 0.98rem;
+    font-size: clamp(0.78rem, 3.2vw, 0.92rem);
+    letter-spacing: -0.01em;
+  }
+
+  .gh-stat-label, .waka-metric-label {
+    font-size: 0.66rem;
   }
 
   /* Tech Grid 2 cols on mobile */
