@@ -3,6 +3,7 @@
  */
 import { profileConfig } from './config.js';
 import { icons } from './assets/icons.js';
+import prebuiltProjects from './data/projects.json';
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -433,13 +434,21 @@ async function renderProjects() {
 
   const cfg = profileConfig.projectsConfig || {};
   
-  // If user disabled auto fetch, render custom projects
+  // 1. Instantly render pre-built deployment fallback data or customProjects
+  const initialData = (Array.isArray(prebuiltProjects) && prebuiltProjects.length > 0)
+    ? prebuiltProjects
+    : (cfg.customProjects || []);
+
+  if (initialData.length > 0) {
+    renderProjectCards(initialData);
+  }
+
+  // If user explicitly disabled auto fetch, stop here
   if (cfg.autoFetchGithub === false) {
-    renderProjectCards(cfg.customProjects || []);
     return;
   }
 
-  const defaultUser = profileConfig.github.username;
+  const defaultUser = profileConfig.github?.username;
   const pinned = cfg.pinnedRepos || [];
 
   try {
@@ -501,10 +510,13 @@ async function renderProjects() {
       }
     }
   } catch (e) {
-    console.debug('GitHub Projects fetch error.', e);
+    console.debug('GitHub Projects client fetch error (using pre-built fallback).', e);
   }
 
-  list.innerHTML = `<div style="grid-column: 1 / -1; padding: 20px; color: var(--text-subtle); text-align: center; font-size: 0.82rem;">无法加载仓库列表</div>`;
+  // Only display error if no fallback data existed
+  if (initialData.length === 0) {
+    list.innerHTML = `<div style="grid-column: 1 / -1; padding: 20px; color: var(--text-subtle); text-align: center; font-size: 0.82rem;">无法加载仓库列表</div>`;
+  }
 }
 
 function renderProjectCards(projects) {

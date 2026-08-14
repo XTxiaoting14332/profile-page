@@ -84,13 +84,6 @@ export const profileConfig = {
     // 【模式二】：离线或关闭自动拉取时的自定义项目列表
     customProjects: [
       {
-        title: "kindle-linux-deploy",
-        description: "Deploy Linux on your Kindle (在 Kindle 上部署 Linux 系统)",
-        tags: ["Shell", "⭐ 33"],
-        repoUrl: "https://github.com/XTxiaoting14332/kindle-linux-deploy",
-        demoUrl: "",
-      },
-      {
         title: "web-ai-proxy",
         description: "基于浏览器插件自动填充方案的 AI 网页反代玩具",
         tags: ["Dart", "⭐ 20"],
@@ -98,10 +91,24 @@ export const profileConfig = {
         demoUrl: "",
       },
       {
-        title: "nonebot-plugin-llm-jade",
-        description: "基于 LLM 的玉检测机器人扩展插件",
-        tags: ["Python", "⭐ 12"],
-        repoUrl: "https://github.com/XTxiaoting14332/nonebot-plugin-llm-jade",
+        title: "nonebot-flutter-gui",
+        description: "现代化 NoneBot 客户端 Flutter 跨平台图形界面",
+        tags: ["Flutter", "Dart"],
+        repoUrl: "https://github.com/NonebotGUI/nonebot-flutter-gui",
+        demoUrl: "",
+      },
+      {
+        title: "nonebot-flutter-webui-dashboard",
+        description: "基于 Flutter Web 的 NoneBot 仪表盘前端界面",
+        tags: ["Flutter", "Web"],
+        repoUrl: "https://github.com/NonebotGUI/nonebot-flutter-webui-dashboard",
+        demoUrl: "",
+      },
+      {
+        title: "nonebot-agent",
+        description: "NoneBot 智能代理与服务协作框架组件",
+        tags: ["Python", "NoneBot"],
+        repoUrl: "https://github.com/NonebotGUI/nonebot-agent",
         demoUrl: "",
       },
       {
@@ -109,6 +116,20 @@ export const profileConfig = {
         description: "ESP32 接入 AI 对话大模型的后端实现",
         tags: ["Python", "⭐ 5"],
         repoUrl: "https://github.com/XTxiaoting14332/esp32-ai-backend",
+        demoUrl: "",
+      },
+      {
+        title: "kindle-linux-deploy",
+        description: "Deploy Linux on your Kindle (在 Kindle 上部署 Linux 系统)",
+        tags: ["Shell", "⭐ 33"],
+        repoUrl: "https://github.com/XTxiaoting14332/kindle-linux-deploy",
+        demoUrl: "",
+      },
+      {
+        title: "nonebot-plugin-llm-jade",
+        description: "基于 LLM 的玉检测机器人扩展插件",
+        tags: ["Python", "⭐ 12"],
+        repoUrl: "https://github.com/XTxiaoting14332/nonebot-plugin-llm-jade",
         demoUrl: "",
       },
       {
