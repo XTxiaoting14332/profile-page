@@ -78,7 +78,8 @@ export const profileConfig = {
       "NonebotGUI/nonebot-flutter-webui-dashboard",
       "NonebotGUI/nonebot-agent",
       "XTxiaoting14332/esp32-ai-backend",
-      "XTxiaoting14332/kindle-linux-deploy"
+      "XTxiaoting14332/kindle-linux-deploy",
+      "XTxiaoting14332/profile-page"
     ],
 
     // 【模式二】：离线或关闭自动拉取时的自定义项目列表
