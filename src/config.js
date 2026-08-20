@@ -194,6 +194,12 @@ export const profileConfig = {
       intro: "柒拾兆字节的博客",
       link: "https://7omb2006.github.io",
       avatar: "http://q2.qlogo.cn/headimg_dl?dst_uin=3311482378&spec=100"
+    },
+    {
+      title: "storm_1614",
+      intro: "颂古风文也别惘，知路偏曲难为圆。",
+      link: "https://storm1614.top",
+      avatar: "https://storm1614.top/img/avatar_hu1035b0617e2a1fc81f93a2449fb745a3_83342_300x0_resize_box_3.png"
     }
   ]
 };

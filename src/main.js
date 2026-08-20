@@ -682,17 +682,22 @@ function renderFriends() {
   list.innerHTML = '';
 
   friends.forEach(f => {
+    const title = f.title || f.name || 'Friend';
+    const intro = f.intro || f.description || '';
+    const link = f.link || f.website || f.url || '#';
+    const avatar = f.avatar || f.image || '';
+
     const a = document.createElement('a');
     a.className = 'friend-card';
-    a.href = f.link || '#';
+    a.href = link;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
-    a.title = `${f.title}${f.intro ? ` - ${f.intro}` : ''}`;
+    a.title = `${title}${intro ? ` - ${intro}` : ''}`;
 
-    const initialChar = (f.title || '?').charAt(0).toUpperCase();
+    const initialChar = title.charAt(0).toUpperCase();
 
-    const avatarHtml = f.avatar ? `
-      <img class="friend-avatar" src="${f.avatar}" alt="${f.title}" loading="lazy" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';" />
+    const avatarHtml = avatar ? `
+      <img class="friend-avatar" src="${avatar}" alt="${title}" loading="lazy" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';" />
       <div class="friend-avatar-fallback" style="display: none;">${initialChar}</div>
     ` : `
       <div class="friend-avatar-fallback">${initialChar}</div>
@@ -704,10 +709,10 @@ function renderFriends() {
       </div>
       <div class="friend-info">
         <div class="friend-title">
-          <span>${f.title}</span>
+          <span>${title}</span>
           <span class="friend-link-icon">↗</span>
         </div>
-        <div class="friend-intro">${f.intro || f.link || ''}</div>
+        <div class="friend-intro">${intro || link}</div>
       </div>
     `;
 
