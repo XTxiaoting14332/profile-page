@@ -167,5 +167,34 @@ export const profileConfig = {
         tag: "AI / API"
       }
     ]
-  }
+  },
+
+  // 友情链接 (Friend Links / Blogroll，未配置或为空时自动隐藏该板块)
+  friends: [
+    {
+      title: "NoneBot WebUI",
+      intro: "新一代NoneBot Web管理界面",
+      link: "https://webui.nbgui.top/",
+      avatar: "/img/nbwebui.png"
+    },
+    {
+      title: "雪碧博客",
+      intro: "一个菜鸟的博客",
+      link: "https://blog.myxuebi.top/",
+      avatar: "http://q2.qlogo.cn/headimg_dl?dst_uin=1651930562&spec=100"
+    },
+    {
+      title: "MC_DALIU",
+      intro: "一个懒人的博客",
+      link: "https://mc-daliu.github.io",
+      avatar: "http://q2.qlogo.cn/headimg_dl?dst_uin=2263157943&spec=100"
+    },
+    {
+      title: "柒拾兆字节",
+      intro: "柒拾兆字节的博客",
+      link: "https://7omb2006.github.io",
+      avatar: "http://q2.qlogo.cn/headimg_dl?dst_uin=3311482378&spec=100"
+    }
+  ]
 };
+

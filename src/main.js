@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderWakaTime();
   renderTechStack();
   renderProjects();
+  renderFriends();
   renderSocialAndBlog();
   initToastAndCopy();
 });
@@ -653,7 +654,69 @@ function renderBlogPosts(posts) {
 }
 
 /**
- * 9. Toast & Copy
+ * 9. Friend Links (Auto-hides if not configured or empty)
+ */
+function renderFriends() {
+  const card = document.getElementById('friends-card');
+  const list = document.getElementById('friends-list');
+  const iconSpan = document.getElementById('friends-title-icon');
+  if (!card || !list) return;
+
+  if (iconSpan && icons.friends) {
+    iconSpan.innerHTML = icons.friends;
+  }
+
+  const rawFriends = profileConfig.friends || profileConfig.friendLinks;
+  const friends = Array.isArray(rawFriends)
+    ? rawFriends
+    : (rawFriends?.items || []);
+
+  // If not configured or empty, hide the card completely
+  if (!friends || friends.length === 0) {
+    card.style.display = 'none';
+    return;
+  }
+
+  // Show card and render items
+  card.style.display = '';
+  list.innerHTML = '';
+
+  friends.forEach(f => {
+    const a = document.createElement('a');
+    a.className = 'friend-card';
+    a.href = f.link || '#';
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.title = `${f.title}${f.intro ? ` - ${f.intro}` : ''}`;
+
+    const initialChar = (f.title || '?').charAt(0).toUpperCase();
+
+    const avatarHtml = f.avatar ? `
+      <img class="friend-avatar" src="${f.avatar}" alt="${f.title}" loading="lazy" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';" />
+      <div class="friend-avatar-fallback" style="display: none;">${initialChar}</div>
+    ` : `
+      <div class="friend-avatar-fallback">${initialChar}</div>
+    `;
+
+    a.innerHTML = `
+      <div class="friend-avatar-wrap">
+        ${avatarHtml}
+      </div>
+      <div class="friend-info">
+        <div class="friend-title">
+          <span>${f.title}</span>
+          <span class="friend-link-icon">↗</span>
+        </div>
+        <div class="friend-intro">${f.intro || f.link || ''}</div>
+      </div>
+    `;
+
+    list.appendChild(a);
+  });
+}
+
+/**
+ * 10. Toast & Copy
  */
 function initToastAndCopy() {
   const copyBtn = document.getElementById('copy-email-btn');
