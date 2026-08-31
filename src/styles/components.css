@@ -229,26 +229,36 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   background: var(--bg-card-subtle);
-  padding: 12px;
+  padding: 14px 16px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
 }
 
 .heatmap-scroll-content {
-  min-width: 600px;
+  width: max-content;
+  min-width: 0;
 }
 
 .heatmap-months-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(var(--heatmap-weeks, 53), 10px);
+  gap: 3px;
   font-size: 0.7rem;
   color: var(--text-subtle);
   margin-bottom: 6px;
   font-family: var(--font-mono);
+  height: 16px;
+  line-height: 16px;
+}
+
+.heatmap-month-label {
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .heatmap-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(var(--heatmap-weeks, 53), 10px);
   gap: 3px;
 }
 
@@ -256,6 +266,7 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
+  width: 10px;
 }
 
 .heatmap-dot {
@@ -282,11 +293,10 @@
 .heatmap-info-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 8px;
+  justify-content: flex-end;
+  margin-top: 10px;
   font-size: 0.72rem;
   color: var(--text-subtle);
-  flex-wrap: wrap;
   gap: 6px;
 }
 

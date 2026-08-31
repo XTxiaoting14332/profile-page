@@ -182,19 +182,51 @@ function renderLiveHeatmap(contributions, totalLastYear) {
   monthsContainer.innerHTML = '';
   calendarContainer.innerHTML = '';
 
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const today = new Date();
-  const startMonthIndex = (today.getMonth() + 1) % 12;
-
-  let mHtml = '';
-  for (let i = 0; i < 12; i++) {
-    mHtml += `<span>${months[(startMonthIndex + i) % 12]}</span>`;
-  }
-  monthsContainer.innerHTML = mHtml;
-
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const numWeeks = Math.ceil(contributions.length / 7);
   let totalCount = totalLastYear || 0;
 
+  // Set CSS custom property for exact number of weeks
+  monthsContainer.style.setProperty('--heatmap-weeks', numWeeks);
+  calendarContainer.style.setProperty('--heatmap-weeks', numWeeks);
+
+  // 1. Calculate precise month positions based on contribution dates
+  const monthLabels = [];
+  let prevWeek = -10;
+
+  for (let w = 0; w < numWeeks; w++) {
+    const weekItems = contributions.slice(w * 7, (w + 1) * 7);
+    if (weekItems.length === 0) continue;
+
+    // Check if the 1st day of any month falls in this week
+    const firstOfMonth = weekItems.find(item => item.date && item.date.endsWith('-01'));
+    if (firstOfMonth) {
+      const m = parseInt(firstOfMonth.date.split('-')[1], 10) - 1;
+      // Ensure at least 2 weeks distance from previous month label to prevent text overlap
+      if (w - prevWeek >= 2) {
+        monthLabels.push({ col: w + 1, name: monthNames[m] });
+        prevWeek = w;
+      }
+    }
+  }
+
+  // Edge case: if first month label is too far from start (e.g. week 3+), add initial month
+  if (monthLabels.length === 0 || monthLabels[0].col > 3) {
+    const firstDate = contributions[0]?.date;
+    if (firstDate) {
+      const m = parseInt(firstDate.split('-')[1], 10) - 1;
+      monthLabels.unshift({ col: 1, name: monthNames[m] });
+    }
+  }
+
+  // Render Month Labels with exact grid column positions
+  let mHtml = '';
+  monthLabels.forEach(m => {
+    mHtml += `<span class="heatmap-month-label" style="grid-column-start: ${m.col};">${m.name}</span>`;
+  });
+  monthsContainer.innerHTML = mHtml;
+
+  // 2. Render Week Columns and Day Dots
   for (let w = 0; w < numWeeks; w++) {
     const col = document.createElement('div');
     col.className = 'heatmap-col';
