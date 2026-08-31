@@ -33,7 +33,10 @@ async function fetchRepoStats() {
     const fullPath = repoItem.includes('/') ? repoItem : `${defaultUser}/${repoItem}`;
     try {
       console.log(`[build-prefetch] Fetching ${fullPath}...`);
-      const res = await fetch(`https://api.github.com/repos/${fullPath}`, { headers });
+      const res = await fetch(`https://api.github.com/repos/${fullPath}`, { 
+        headers, 
+        signal: AbortSignal.timeout(3000) 
+      });
 
       if (res.ok) {
         const r = await res.json();
