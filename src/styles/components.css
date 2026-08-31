@@ -236,7 +236,7 @@
 
 .heatmap-scroll-content {
   width: 100%;
-  min-width: 620px;
+  min-width: 0;
 }
 
 .heatmap-months-row {
@@ -973,6 +973,49 @@
 
   .gh-stat-label, .waka-metric-label {
     font-size: 0.66rem;
+  }
+
+  /* GitHub Heatmap Mobile - Full Year rendered directly without scrolling */
+  .heatmap-outer {
+    padding: 8px 10px;
+    overflow-x: hidden;
+  }
+
+  .heatmap-scroll-content {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .heatmap-months-row {
+    gap: 1.5px;
+    font-size: clamp(0.48rem, 1.8vw, 0.58rem);
+    height: 12px;
+    line-height: 12px;
+    margin-bottom: 4px;
+    letter-spacing: -0.03em;
+  }
+
+  .heatmap-grid {
+    gap: 1.5px;
+  }
+
+  .heatmap-col {
+    gap: 1.5px;
+  }
+
+  .heatmap-dot {
+    border-radius: 1.5px;
+  }
+
+  .heatmap-info-row {
+    font-size: 0.65rem;
+    margin-top: 6px;
+  }
+
+  .legend-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 1px;
   }
 
   /* Tech Grid 2 cols on mobile */
