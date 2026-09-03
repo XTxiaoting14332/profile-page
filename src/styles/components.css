@@ -762,6 +762,95 @@
   background: var(--bg-card-hover);
 }
 
+/* Featured Mini Game Entry Card */
+.game-entry-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  text-decoration: none;
+  color: var(--text-main);
+  margin-top: 8px;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.game-entry-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.game-entry-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .game-entry-icon-wrap {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.game-entry-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.game-entry-card:hover .game-entry-icon {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+.game-entry-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  gap: 1px;
+}
+
+.game-entry-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.game-entry-desc {
+  font-size: 0.7rem;
+  color: var(--text-subtle);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.game-entry-badge {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-subtle);
+  color: var(--primary-text);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.game-entry-card:hover .game-entry-badge {
+  transform: translateX(2px);
+}
+
 /* ==========================================================================
    8. Friend Links (Blogroll) Card
    ========================================================================== */

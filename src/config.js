@@ -169,6 +169,14 @@ export const profileConfig = {
     ]
   },
 
+  // 个人小游戏配置 (Mini Game，未配置时自动隐藏入口)
+  game: {
+    title: "喵刺客",
+    link: "https://cat.n1ghtw1nd.com",
+    icon: "https://cat.n1ghtw1nd.com/assets/cat_down.png",
+    desc: "休闲动作小游戏 • 点击即玩"
+  },
+
   // 友情链接 (Friend Links / Blogroll，未配置或为空时自动隐藏该板块)
   friends: [
     {
@@ -200,6 +208,12 @@ export const profileConfig = {
       intro: "颂古风文也别惘，知路偏曲难为圆。",
       link: "https://storm1614.top",
       avatar: "https://storm1614.top/img/head.png"
+    },
+    {
+      title: "The Drizzol Nook",
+      intro: "一间藏在雨里的小屋",
+      link: "https://drizzol.top/",
+      avatar: "https://drizzol.top/assets/avatar-SeQ2F9sB.jpg"
     }
   ]
 };

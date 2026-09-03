@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProjects();
   renderFriends();
   renderSocialAndBlog();
+  renderMiniGame();
   initToastAndCopy();
 });
 
@@ -715,7 +716,7 @@ function renderFriends() {
 
   friends.forEach(f => {
     const title = f.title || f.name || 'Friend';
-    const intro = f.intro || f.description || '';
+    const intro = f.intro || f.desc || f.description || '';
     const link = f.link || f.website || f.url || '#';
     const avatar = f.avatar || f.image || '';
 
@@ -753,7 +754,37 @@ function renderFriends() {
 }
 
 /**
- * 10. Toast & Copy
+ * 10. Mini Game Entrance (Auto-hides if not configured)
+ */
+function renderMiniGame() {
+  const gameLink = document.getElementById('game-entry-link');
+  if (!gameLink) return;
+
+  const g = profileConfig.game;
+  if (!g || !g.link) {
+    gameLink.style.display = 'none';
+    return;
+  }
+
+  gameLink.style.display = 'flex';
+  gameLink.href = g.link;
+  if (g.title) {
+    gameLink.title = `点击畅玩小游戏：${g.title}`;
+    const titleEl = document.getElementById('game-entry-title');
+    if (titleEl) titleEl.textContent = g.title;
+  }
+  if (g.desc) {
+    const descEl = document.getElementById('game-entry-desc');
+    if (descEl) descEl.textContent = g.desc;
+  }
+  if (g.icon) {
+    const iconEl = document.getElementById('game-entry-icon');
+    if (iconEl) iconEl.src = g.icon;
+  }
+}
+
+/**
+ * 11. Toast & Copy
  */
 function initToastAndCopy() {
   const copyBtn = document.getElementById('copy-email-btn');
