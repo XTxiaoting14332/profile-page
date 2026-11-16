@@ -214,6 +214,12 @@ export const profileConfig = {
       intro: "一间藏在雨里的小屋",
       link: "https://drizzol.top/",
       avatar: "https://drizzol.top/assets/avatar-SeQ2F9sB.jpg"
+    },
+    {
+      title: "墨安槿幻的幻想之境",
+      intro: "欢迎光临我的幻想窝 ╰(*°▽°*)╯",
+      link: "https://moanjinhuan.top/",
+      avatar: "https://moanjinhuan.top/images/avatar.jpg"
     }
   ]
 };

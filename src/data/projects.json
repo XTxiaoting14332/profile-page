@@ -4,10 +4,10 @@
     "description": "基于浏览器插件自动填充方案的AI网页反代玩具",
     "tags": [
       "Dart",
-      "⭐ 22"
+      "⭐ 25"
     ],
     "repoUrl": "https://github.com/XTxiaoting14332/web-ai-proxy",
-    "stars": 22,
+    "stars": 25,
     "language": "Dart"
   },
   {
@@ -15,10 +15,10 @@
     "description": "_✨新一代NoneBot图形化界面✨_",
     "tags": [
       "Dart",
-      "⭐ 70"
+      "⭐ 68"
     ],
     "repoUrl": "https://github.com/NonebotGUI/nonebot-flutter-gui",
-    "stars": 70,
+    "stars": 68,
     "language": "Dart"
   },
   {
@@ -26,10 +26,10 @@
     "description": "NoneBot GUI的 WebUI版本",
     "tags": [
       "Dart",
-      "⭐ 33"
+      "⭐ 32"
     ],
     "repoUrl": "https://github.com/NonebotGUI/nonebot-flutter-webui-dashboard",
-    "stars": 33,
+    "stars": 32,
     "language": "Dart"
   },
   {
@@ -48,10 +48,10 @@
     "description": "✨ESP32接入AI对话模型的后端实现✨",
     "tags": [
       "Python",
-      "⭐ 6"
+      "⭐ 7"
     ],
     "repoUrl": "https://github.com/XTxiaoting14332/esp32-ai-backend",
-    "stars": 6,
+    "stars": 7,
     "language": "Python"
   },
   {
@@ -59,10 +59,10 @@
     "description": "Deploy Linux on your kindle",
     "tags": [
       "Code",
-      "⭐ 33"
+      "⭐ 35"
     ],
     "repoUrl": "https://github.com/XTxiaoting14332/kindle-linux-deploy",
-    "stars": 33,
+    "stars": 35,
     "language": "Code"
   },
   {
